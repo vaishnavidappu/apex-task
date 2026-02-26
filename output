@@ -1,0 +1,3 @@
+# Save the cleaned DataFrame to a new CSV
+df.to_csv('people_cleaned.csv', index=False)
+print("Cleaned data saved.")
