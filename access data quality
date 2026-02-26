@@ -1,0 +1,17 @@
+# 3.1 Check for missing values
+print("Missing values per column:\n", df.isna().sum())
+
+# 3.2 Check for duplicates
+print("Duplicate rows:", df.duplicated().sum())
+
+# 3.3 Spot formatting issues (e.g., inconsistent phone formats, case)
+print(df['Phone'].head(3))  # phones have dashes, dots, “x”, etc.
+
+# 3.4 Convert DOB to datetime and compute Age
+df['Date of birth'] = pd.to_datetime(df['Date of birth'], errors='coerce')
+df['Age'] = (pd.Timestamp.today() - df['Date of birth']).dt.days // 365
+print(df['Age'].describe())
+
+# 3.5 Identify outliers in Age (e.g., unusually high)
+old = df[df['Age'] > 100]
+print("Suspected age outliers:\n", old[['First Name','Last Name','Age']])
