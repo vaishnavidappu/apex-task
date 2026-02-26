@@ -1,0 +1,23 @@
+# 4.1 Drop exact duplicate rows (if any)
+df = df.drop_duplicates()
+
+# 4.2 Handle missing values
+#    - For demonstration, drop rows missing a name
+df = df.dropna(subset=['First Name','Last Name'])
+#    - Fill any missing emails with a placeholder
+df['Email'] = df['Email'].fillna('no_email@domain.com')
+
+# 4.3 Standardize formats
+#    - Convert Sex to single-letter codes
+df['Sex'] = df['Sex'].map({'Male':'M', 'Female':'F'})
+#    - Normalize phone: remove non-digits
+df['Phone'] = df['Phone'].str.replace(r'\D','', regex=True)
+
+# 4.4 Feature engineering: Calculate precise age
+today = pd.Timestamp.today()
+df['Date of birth'] = pd.to_datetime(df['Date of birth'])  # ensure datetime
+df['Age'] = (today - df['Date of birth']).dt.days // 365
+
+# 4.5 Re-order columns and drop unneeded ones if desired
+df = df[['User Id','First Name','Last Name','Sex','Email','Phone',
+         'Date of birth','Age','Job Title']]
