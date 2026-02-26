@@ -1,0 +1,10 @@
+| Column Name       | Data Type | Description                       |
+| ----------------- | --------- | --------------------------------- |
+| **User Id**       | string    | Unique identifier for each person |
+| **First Name**    | string    | Person’s first name               |
+| **Last Name**     | string    | Person’s last name                |
+| **Sex**           | string    | Gender (“Male”/“Female”)          |
+| **Email**         | string    | Email address                     |
+| **Phone**         | string    | Phone number (various formats)    |
+| **Date of birth** | date      | Person’s birth date (YYYY-MM-DD)  |
+| **Job Title**     | string    | Person’s job/occupation           |
